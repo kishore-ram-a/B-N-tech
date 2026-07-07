@@ -1,29 +1,60 @@
-// src/components/TeamCard.jsx
 import React from 'react'
 import styled from 'styled-components'
 import { TeamCardWrapper } from '../assets/wrappers/TeamWrapper'
 
-// Elegant Initials Avatar Placeholder
 const InitialsAvatar = styled.div`
-  width: 110px;
-  height: 110px;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
   border-radius: 50%;
-  margin: 0 auto 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--accent-gradient);
-  color: var(--bg-surface);
+  color: #ffffff;
   font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: -0.02em;
   border: 2px solid var(--border-color);
   box-shadow: var(--shadow-hard-sm);
 `
 
-const TeamCard = ({ name, role, bio }) => {
-  // Extract initials (e.g., "Kishore Ram Arunkumar" -> "KR")
+const InfoCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+`
+
+const LinksRow = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+`
+
+const IconLink = styled.a`
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--bg-surface);
+  transition: var(--transition-quick);
+
+  &:hover {
+    background: var(--accent-highlight);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-hard-sm);
+  }
+`
+
+const TeamCard = ({ name, role, github, linkedin }) => {
   const getInitials = (str) => {
     if (!str) return ''
     const parts = str.trim().split(/\s+/)
@@ -33,16 +64,25 @@ const TeamCard = ({ name, role, bio }) => {
 
   return (
     <TeamCardWrapper>
-      {/* Dynamic Avatar Render instead of broken img tags */}
       <InitialsAvatar>{getInitials(name)}</InitialsAvatar>
 
-      <h3 className='team-member-name'>{name}</h3>
-      <p className='team-member-role'>{role}</p>
-      <p className='team-member-bio'>{bio}</p>
+      <InfoCol>
+        <h3 className='team-member-name'>{name}</h3>
+        <p className='team-member-role'>{role}</p>
 
-      <a href='#linkedin' className='linkedin-link'>
-        Connect on LinkedIn
-      </a>
+        <LinksRow>
+          {github && (
+            <IconLink href={github} target='_blank' rel='noopener noreferrer' aria-label={`${name} on GitHub`}>
+              GH
+            </IconLink>
+          )}
+          {linkedin && (
+            <IconLink href={linkedin} target='_blank' rel='noopener noreferrer' aria-label={`${name} on LinkedIn`}>
+              in
+            </IconLink>
+          )}
+        </LinksRow>
+      </InfoCol>
     </TeamCardWrapper>
   )
 }
