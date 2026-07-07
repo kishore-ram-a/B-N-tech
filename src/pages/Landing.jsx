@@ -1,4 +1,3 @@
-// src/pages/Landing.jsx
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Philosophy from '../components/Philosophy'
@@ -128,7 +127,7 @@ const Landing = () => {
             >
               Join Our Team
             </button>
-            <a
+            
               href='#platform'
               style={{
                 padding: '0.85rem 2.5rem',
@@ -158,7 +157,7 @@ const Landing = () => {
           >
             {[
               { value: '25+', label: 'Engineers' },
-              { value: '10+', label: 'Systems Shipped' },
+              { value: '3', label: 'Projects Deployed' },
               { value: '100%', label: 'Remote-Ready' },
             ].map((stat) => (
               <div key={stat.label} style={{ textAlign: 'center' }}>
@@ -186,7 +185,6 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Explicit IDs wrapping sections to satisfy Navbar's active tracker */}
       <div id='philosophy'>
         <Philosophy />
       </div>
