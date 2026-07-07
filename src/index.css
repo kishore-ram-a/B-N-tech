@@ -1,0 +1,58 @@
+/* src/index.css */
+:root {
+  /* System Typography Fonts */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Paper & Ink Palette - white paper, black ink, hard shadows */
+  --bg-base: #faf8f2; /* Warm paper white, not stark white - feels like actual paper */
+  --bg-surface: #ffffff; /* Pure white for cards sitting "on top" of the paper */
+  --border-color: #161616; /* Solid ink-black border, like a pencil/pen outline */
+
+  /* Ink Typography */
+  --text-primary: #161616; /* Near-black ink */
+  --text-secondary: #3a3a3a; /* Softer ink for body copy */
+  --text-muted: #6e6e6e; /* Faded pencil gray for captions */
+
+  /* Marker Highlight Accents (used sparingly, like a highlighter pen on paper) */
+  --accent-blue: #2563eb;
+  --accent-teal: #0d9488;
+  --accent-gold: #eab308;
+  --accent-highlight: #ffd83d; /* Marker-yellow highlight behind key phrases */
+
+  --accent-gradient: linear-gradient(
+    135deg,
+    #262626 0%,
+    #000000 100%
+  ); /* Flat ink-black for buttons - like a rubber stamp, not a colorful gradient */
+
+  /* Hard offset shadows - NO blur - this is what creates the "paper layer" 3D effect */
+  --shadow-hard-sm: 3px 3px 0px #161616;
+  --shadow-hard: 6px 6px 0px #161616;
+  --shadow-hard-hover: 8px 8px 0px #161616;
+
+  --transition-quick: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base resets to bind the new colored theme */
+body {
+  margin: 0;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure global link transitions handle the new variables elegantly */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--text-primary) !important;
+}
